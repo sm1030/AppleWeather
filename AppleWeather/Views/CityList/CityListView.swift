@@ -69,7 +69,6 @@ struct CityListView: View {
                         }
                         .onDelete(perform: onDelete)
                         .onMove(perform: onMove)
-                        .listRowBackground(Color.black)
                     }
                     .environment(\.editMode, $cityListViewModel.editMode)
                     .listStyle(.plain)
