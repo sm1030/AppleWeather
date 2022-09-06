@@ -99,6 +99,21 @@ import Foundation
             }
         }
     }
+    
+    func addCity(locationViewModel: LocationViewModel) {
+        weatherViewModel?.locationViewModels.append(locationViewModel)
+        weatherViewModel?.saveCurrentCityList()
+    }
+    
+    func deleteCity(offsets: IndexSet) {
+        weatherViewModel?.locationViewModels.remove(atOffsets: offsets)
+        weatherViewModel?.saveCurrentCityList()
+    }
+    
+    func moveCity(source: IndexSet, destination: Int) {
+        weatherViewModel?.locationViewModels.move(fromOffsets: source, toOffset: destination)
+        weatherViewModel?.saveCurrentCityList()
+    }
 }
 
 struct City: Hashable, Identifiable, Decodable {

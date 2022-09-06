@@ -36,7 +36,7 @@ struct CityList_LocationPreview: View {
                     
                     Button {
                         presentationMode.wrappedValue.dismiss()
-                        weatherViewModel.locationViewModels.append(cityListViewModel.previewLocationViewModel)
+                        cityListViewModel.addCity(locationViewModel: cityListViewModel.previewLocationViewModel)
                         cityListViewModel.searchText = ""
                         cityListViewModel.updateSearchResultsDisplayMode()
                         cityListViewModel.searchTextFieldIsFocused = false

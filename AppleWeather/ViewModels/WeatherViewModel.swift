@@ -50,6 +50,11 @@ import SwiftUI
         cityListViewModel.weatherViewModel = self
     }
     
+    func saveCurrentCityList() {
+        UserDefaults.locations = locationViewModels.map { $0.locationModel.location.address }
+        UserDefaults.standard.synchronize()
+    }
+    
     func switchLocationsToUseMockData() {
         for locationViewModel in locationViewModels {
             let address = locationViewModel.locationModel.location.address

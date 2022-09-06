@@ -35,11 +35,11 @@ struct CityListView: View {
     }
     
     private func onDelete(offsets: IndexSet) {
-        weatherViewModel.locationViewModels.remove(atOffsets: offsets)
+        cityListViewModel.deleteCity(offsets: offsets)
     }
     
     private func onMove(source: IndexSet, destination: Int) {
-        weatherViewModel.locationViewModels.move(fromOffsets: source, toOffset: destination)
+        cityListViewModel.moveCity(source: source, destination: destination)
     }
     
     var body: some View {
