@@ -1,5 +1,5 @@
 //
-//  CityList_LocationSummaryView.swift
+//  CityList_ItemView.swift
 //  AppleWeather
 //
 //  Created by Alexandre Malkov on 02/09/2022.
@@ -9,7 +9,7 @@ import Foundation
 
 import SwiftUI
 
-struct CityList_LocationSummaryView: View {
+struct CityList_ItemView: View {
     
     @EnvironmentObject var locationViewModel: LocationViewModel
     @EnvironmentObject var cityListViewModel: CityListViewModel
@@ -93,7 +93,7 @@ struct CityList_LocationSummaryView: View {
     }
 }
 
-struct CityList_LocationSummaryView_Previews: PreviewProvider {
+struct CityList_ItemView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Rectangle()
@@ -101,7 +101,7 @@ struct CityList_LocationSummaryView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
-            CityList_LocationSummaryView()
+            CityList_ItemView()
                 .environmentObject(weatherViewModel.locationViewModels[0])
                 .environmentObject(weatherViewModel.cityListViewModel)
         }

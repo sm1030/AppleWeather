@@ -63,7 +63,7 @@ struct CityListView: View {
                                 weatherViewModel.selectTabWithLocation(locationViewModel)
                                 presentationMode.wrappedValue.dismiss()
                             } label: {
-                                CityList_LocationSummaryView()
+                                CityList_ItemView()
                                     .environmentObject(locationViewModel)
                             }
                         }
