@@ -55,6 +55,7 @@ struct CityList_TopSlidingPanelView: View {
                             .submitLabel(.search)
                             .disableAutocorrection(true)
                             .focused($searchTextFieldIsFocused)
+                            .disabled(cityListViewModel.editMode == .active)
                             .onChange(of: searchText, perform: { newValue in
                                 cityListViewModel.searchTextHaveChabged(searchText: newValue)
                                 cityListViewModel.updateSearchResultsDisplayMode()
