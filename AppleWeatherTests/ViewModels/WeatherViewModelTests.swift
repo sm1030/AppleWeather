@@ -21,12 +21,12 @@ class WeatherViewModelTests: XCTestCase {
     }
     
     @MainActor func testVcwTimeStringToSeconds() throws {
-        XCTAssertEqual(weatherViewModel?.locationViewModels.count, 3)
+        XCTAssertEqual(weatherViewModel?.locationViewModels.count, 5)
         
         let firstLocationViewModel = try XCTUnwrap(weatherViewModel?.locationViewModels.first)
         XCTAssertEqual(firstLocationViewModel.name, "London")
-        XCTAssertEqual(firstLocationViewModel.temperature, "22°")
-        XCTAssertEqual(firstLocationViewModel.conditions, "Clear")
+        XCTAssertEqual(firstLocationViewModel.temperature, "28°")
+        XCTAssertEqual(firstLocationViewModel.conditions, "Partially Cloudy")
         XCTAssertEqual(firstLocationViewModel.isDataLoaded, true)
     }
 }
