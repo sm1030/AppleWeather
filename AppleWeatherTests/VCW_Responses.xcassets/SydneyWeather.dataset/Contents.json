@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "SydneyWeather.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
