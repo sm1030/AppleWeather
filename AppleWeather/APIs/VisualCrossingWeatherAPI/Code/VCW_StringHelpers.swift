@@ -54,9 +54,28 @@ extension String {
         if self == todayString {
             return "Today"
         } else {
-            dateFormatter.dateFormat = "E"
-            let resultString = dateFormatter.string(from: date)
-            return resultString
+            let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+            let myComponents = myCalendar.components(.weekday, from: date)
+            let weekDay = myComponents.weekday
+            switch weekDay {
+            case 1:
+                return "Sun"
+            case 2:
+                return "Mon"
+            case 3:
+                return "Tue"
+            case 4:
+                return "Wed"
+            case 5:
+                return "Thu"
+            case 6:
+                return "Fri"
+            case 7:
+                return "Sat"
+            default:
+                print("Error fetching days")
+                return "Day"
+            }
         }
     }
     
