@@ -114,6 +114,7 @@ struct CityListView: View {
                 .environmentObject(cityListViewModel)
             }
             .animation(.linear(duration: 0.2), value: cityListViewModel.searchTextFieldIsFocused)
+            .animation(.linear(duration: 0.2), value: cityListViewModel.editMode)
             .alert(cityListViewModel.alertMessage, isPresented: $cityListViewModel.isShowingAlert) {
                 Button("OK", role: .cancel) { }
             }

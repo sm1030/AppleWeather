@@ -12,11 +12,12 @@ import SwiftUI
 struct CityList_LocationSummaryView: View {
     
     @EnvironmentObject var locationViewModel: LocationViewModel
+    @EnvironmentObject var cityListViewModel: CityListViewModel
     
     @State var weatherBackgroundViewModel = WeatherBackgroundViewModel()
     @State var timeString = "00:00"
     
-    let viewHeight: CGFloat = 110
+    var viewHeight: CGFloat = 110
     
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
@@ -59,9 +60,11 @@ struct CityList_LocationSummaryView: View {
                     
                     Spacer()
                     
-                    Text(locationViewModel.conditions)
-                        .font(.system(size: 14))
-                        .foregroundColor(.white)
+                    if cityListViewModel.editMode == .inactive {
+                        Text(locationViewModel.conditions)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                    }
                 }
                 
                 Spacer()
@@ -73,19 +76,20 @@ struct CityList_LocationSummaryView: View {
                         .foregroundColor(.white)
                         .padding(.top, -5)
                     
-                    Spacer()
-                    
-                    Text("H:\(locationViewModel.temperatureHigh)  L:\(locationViewModel.temperatureLow)")
-                        .font(.system(size: 14))
-                        .foregroundColor(.white)
+                    if cityListViewModel.editMode == .inactive {
+                        Spacer()
+                        Text("H:\(locationViewModel.temperatureHigh)  L:\(locationViewModel.temperatureLow)")
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                    }
                 }
             }
             .padding(.top, 10)
             .padding(.horizontal)
             .padding(.bottom, 12)
         }
-        .frame(height: viewHeight)
         .cornerRadius(20)
+        .animation(.linear(duration: 0.2), value: cityListViewModel.editMode)
     }
 }
 
@@ -99,6 +103,7 @@ struct CityList_LocationSummaryView_Previews: PreviewProvider {
             let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
             CityList_LocationSummaryView()
                 .environmentObject(weatherViewModel.locationViewModels[0])
+                .environmentObject(weatherViewModel.cityListViewModel)
         }
     }
 }
