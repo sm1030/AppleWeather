@@ -47,10 +47,12 @@ struct CityList_ItemView: View {
                     Text(locationViewModel.name)
                         .font(.system(size: UIFontMetrics.default.scaledValue(for: 23)).weight(.semibold))
                         .foregroundColor(.white)
+                        .lineLimit(1)
                     
                     Text(timeString)
                         .font(.system(size: 14))
                         .foregroundColor(.white)
+                        .lineLimit(1)
                         .onReceive(timer) { time in
                             updateTimeString()
                         }
@@ -64,6 +66,7 @@ struct CityList_ItemView: View {
                         Text(locationViewModel.conditions)
                             .font(.system(size: 14))
                             .foregroundColor(.white)
+                            .lineLimit(1)
                     }
                 }
                 
@@ -75,12 +78,14 @@ struct CityList_ItemView: View {
                         .font(.system(size: 47).weight(.light))
                         .foregroundColor(.white)
                         .padding(.top, -5)
+                        .lineLimit(1)
                     
                     if cityListViewModel.editMode == .inactive {
                         Spacer()
                         Text("H:\(locationViewModel.temperatureHigh)  L:\(locationViewModel.temperatureLow)")
                             .font(.system(size: 14))
                             .foregroundColor(.white)
+                            .lineLimit(1)
                     }
                 }
             }
