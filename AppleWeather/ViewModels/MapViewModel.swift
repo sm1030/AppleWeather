@@ -42,14 +42,14 @@ import MapKit
         if self.temperature != temperature {
             self.temperature = temperature
         }
+        if self.minTemperature != minTemperature || self.maxTemperature != maxTemperature {
+            self.tempGradientColors = tempGradientColors
+        }
         if self.minTemperature != minTemperature {
             self.minTemperature = minTemperature
         }
         if self.maxTemperature != maxTemperature {
             self.maxTemperature = maxTemperature
-        }
-        if self.minTemperature != minTemperature || self.maxTemperature != maxTemperature {
-            self.tempGradientColors = tempGradientColors
         }
     }
     

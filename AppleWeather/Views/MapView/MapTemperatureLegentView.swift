@@ -67,7 +67,7 @@ struct MapTemperatureLegentView: View {
             }
             .padding(.vertical, 10)
         }
-        .background(RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10).fill(.thinMaterial))
+        .background(RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10).fill(.white.opacity(0.6)))
     }
 }
 

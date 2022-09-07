@@ -34,12 +34,14 @@ struct MapLocationsSheetView: View {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .top, spacing: 0) {
                     Image(systemName: "thermometer")
+                        .foregroundColor(.black)
                         .font(.system(size: UIFontMetrics.default.scaledValue(for: 29)))
                         .padding(.leading, 8)
                         .padding(.trailing)
                     
                     VStack(alignment: .leading, spacing: 1) {
                         Text("Temperature")
+                            .foregroundColor(.black)
                             .font(.system(size: UIFontMetrics.default.scaledValue(for: 16), weight: .semibold))
                         
                         Text("Your Locations")

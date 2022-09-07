@@ -11,19 +11,18 @@ import MapKit
 struct MapView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @EnvironmentObject var model: MapViewModel
+    @EnvironmentObject var mapViewModel: MapViewModel
     
     @State private var isShowingMapLocationSheetView = false
     
     var body: some View {
         ZStack(alignment: .center) {
             
-            // MARK: The map
-            Map(coordinateRegion: $model.mapRegion)
+            Map(coordinateRegion: $mapViewModel.mapRegion)
                 .edgesIgnoringSafeArea(.all)
             
             // MARK: Temperature color over map
-            Color(temperature: Float(model.temperature))
+            Color(temperature: Float(mapViewModel.temperature))
                 .opacity(0.5)
                 .allowsHitTesting(false)
             
@@ -46,7 +45,7 @@ struct MapView: View {
                     } label: {
                         ZStack(alignment: .center) {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(.regularMaterial)
+                                .fill(.white.opacity(0.7))
                             Text("Done")
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.black)
@@ -61,7 +60,7 @@ struct MapView: View {
                             .padding(.top, 10)
                             .padding(.horizontal, 10)
                             .padding(.bottom, 12)
-                            .background(RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0).fill(.thinMaterial))
+                            .background(RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0).fill(.white.opacity(0.6)))
                         
                         MapTemperatureLegentView()
                     }
@@ -74,13 +73,13 @@ struct MapView: View {
                 // MARK: Right side buttons
                 VStack(alignment: .leading, spacing: 0.5) {
                     Button() {
-                        model.moveToUserLocation()
+                        mapViewModel.moveToUserLocation()
                     } label: {
                         Image(systemName: "location")
                             .font(.system(size: 22, weight: .light))
                             .foregroundColor(.black)
                             .padding(10)
-                            .background(RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0).fill(.regularMaterial))
+                            .background(RoundedCorners(tl: 10, tr: 10, bl: 0, br: 0).fill(.white.opacity(0.7)))
                     }
                     
                     Button() {
@@ -90,7 +89,7 @@ struct MapView: View {
                             .font(.system(size: 22, weight: .light))
                             .foregroundColor(.black)
                             .padding(10)
-                            .background(RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10).fill(.regularMaterial))
+                            .background(RoundedCorners(tl: 0, tr: 0, bl: 10, br: 10).fill(.white.opacity(0.7)))
                     }
                     
                     Spacer()
@@ -100,14 +99,17 @@ struct MapView: View {
             
             // MARK: Central temperature badge
             MapTemperatureBadgeView()
-                .environmentObject(model)
+                .environmentObject(mapViewModel)
                 .offset(y: -25)
         }
         .onAppear {
-            model.moveToLocationLocation()
+            mapViewModel.moveToLocationLocation()
         }
         .sheet(isPresented: $isShowingMapLocationSheetView) {
-            MapLocationsSheetView(mockLocations: nil)
+            if let temperatureViewModel = mapViewModel.locationViewModel?.temperatureViewModel {
+                MapLocationsSheetView(mockLocations: nil)
+                    .environmentObject(temperatureViewModel)
+            }
         }
     }
     
