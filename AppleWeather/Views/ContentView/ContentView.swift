@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var weatherViewModel = WeatherViewModel(isUsingMockData: false)
+    @StateObject private var weatherViewModel = WeatherViewModel(isUsingMockData: CommandLine.arguments.contains("-useMockData"))
     
     var body: some View {
         ZStack {
