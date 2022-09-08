@@ -24,9 +24,10 @@ class WeatherViewModelTests: XCTestCase {
         XCTAssertEqual(weatherViewModel?.locationViewModels.count, 5)
         
         let firstLocationViewModel = try XCTUnwrap(weatherViewModel?.locationViewModels.first)
+        let currentHourWeather = try XCTUnwrap(firstLocationViewModel.locationModel.currentHourWeather)
         XCTAssertEqual(firstLocationViewModel.name, "London")
-        XCTAssertEqual(firstLocationViewModel.temperature, "28°")
-        XCTAssertEqual(firstLocationViewModel.conditions, "Partially Cloudy")
+        XCTAssertEqual(firstLocationViewModel.temperature, String(vcw_temperature: currentHourWeather.temp))
+        XCTAssertEqual(firstLocationViewModel.conditions, currentHourWeather.conditions)
         XCTAssertEqual(firstLocationViewModel.isDataLoaded, true)
     }
 }
