@@ -62,7 +62,7 @@ struct TemperatureView_Previews: PreviewProvider {
         ZStack {
             Color(hex: "4082BE")
                 .ignoresSafeArea()
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             let temperatureViewModel = weatherViewModel.selectedLocationViewModel.temperatureViewModel
             TemperatureView()
                 .environmentObject(temperatureViewModel)

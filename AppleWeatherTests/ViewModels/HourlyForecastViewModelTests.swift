@@ -13,7 +13,7 @@ class HourlyForecastViewModelTests: XCTestCase {
     var hourlyForecastViewModel: HourlyForecastViewModel?
 
     @MainActor override func setUpWithError() throws {
-        let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
         let locationViewModel = weatherViewModel.selectedLocationViewModel
         hourlyForecastViewModel = HourlyForecastViewModel(mockLocalTimeInSeconds: 0)
         hourlyForecastViewModel?.publish(locationViewModel.locationModel)

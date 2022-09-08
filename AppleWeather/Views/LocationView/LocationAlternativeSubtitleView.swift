@@ -51,7 +51,7 @@ struct LocationAlternativeSubtitleView_Previews: PreviewProvider {
                 .fill(Color(hex: "6CA1C8"))
                 .ignoresSafeArea()
             
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             LocationAlternativeSubtitleView(scrollViewPosition: .constant(-200))
                 .environmentObject(weatherViewModel.selectedLocationViewModel)
         }

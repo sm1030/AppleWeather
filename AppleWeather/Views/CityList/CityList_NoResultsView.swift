@@ -36,7 +36,7 @@ struct CityList_NoResultsView: View {
 
 struct CityList_NoResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        let watherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        let watherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
         CityList_NoResultsView()
             .environmentObject(watherViewModel.cityListViewModel)
     }

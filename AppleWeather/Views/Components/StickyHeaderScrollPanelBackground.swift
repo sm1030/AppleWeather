@@ -196,7 +196,7 @@ struct StickyHeaderScrollBacground_Previews: PreviewProvider {
                 Color(hex: "7BC7F9") // 60 131 187   #1975BB // 25 117 187  Correct: #2574BB // 37 116 187
             }
             .frame(height: 200)
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             let hourlyForecastViewModel = weatherViewModel.selectedLocationViewModel.hourlyForecastViewModel
             HourlyForecastView()
                 .environmentObject(hourlyForecastViewModel)

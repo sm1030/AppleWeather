@@ -117,7 +117,7 @@ struct CityList_TopSlidingPanelView: View {
 
 struct CityList_TopSlidingPanelView_Previews: PreviewProvider {
     static var previews: some View {
-        let watherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        let watherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
         CityList_TopSlidingPanelView(staticPanelHeight: 45,
                                         headerPanelScrollDistance: 0,
                                         scrollViewContentOffset: .constant(0),

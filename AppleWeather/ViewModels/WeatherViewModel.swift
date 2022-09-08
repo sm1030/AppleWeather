@@ -30,7 +30,7 @@ import SwiftUI
     @Published var isShowingAlert = false
     @Published var alertMessage = ""
     
-    init(isUsingMockData: Bool = false, assyncMode: Bool = true) {
+    init(isUsingMockData: Bool = false, asyncMode: Bool = true) {
         let savedLocations = UserDefaults.locations
         locationViewModels = savedLocations.map { address in
             var mockedData: Data?
@@ -39,7 +39,7 @@ import SwiftUI
                     mockedData = data
                 }
             }
-            let locationViewModel = LocationViewModel(address: address, mockedData: mockedData, assyncMode: assyncMode)
+            let locationViewModel = LocationViewModel(address: address, mockedData: mockedData, asyncMode: asyncMode)
             locationViewModel.weatherViewModel = self
             if address == savedLocations.first {
                 selectedLocationViewModel = locationViewModel

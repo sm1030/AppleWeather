@@ -13,7 +13,7 @@ class TenDayForecastViewModelTests: XCTestCase {
     var tenDayForecastViewModel: TenDayForecastViewModel?
 
     @MainActor override func setUpWithError() throws {
-        let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
         tenDayForecastViewModel = weatherViewModel.locationViewModels.first?.tenDayForecastViewModel
     }
 

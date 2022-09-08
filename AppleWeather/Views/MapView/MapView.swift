@@ -129,7 +129,7 @@ struct MapView_Previews: PreviewProvider {
         ZStack {
             Color(hex: "4082BE")
                 .ignoresSafeArea()
-            let mapViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false).selectedLocationViewModel.mapViewModel
+            let mapViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false).selectedLocationViewModel.mapViewModel
             MapView()
                 .environmentObject(mapViewModel)
         }

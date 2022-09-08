@@ -29,7 +29,7 @@ struct TwoLineMessageView_Previews: PreviewProvider {
         ZStack {
             Color(hex: "4082BE")
                 .ignoresSafeArea()
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             let feelsLikeViewModel = weatherViewModel.selectedLocationViewModel.feelsLikeViewModel
             TwoLineMessageView()
                 .environmentObject(feelsLikeViewModel as TwoLinesMessageViewModel)

@@ -35,8 +35,8 @@ import Foundation
     
     weak var weatherViewModel: WeatherViewModel?
     
-    init(address: String, mockedData: Data? = nil, assyncMode: Bool = true) {
-        self.locationModel = LocationModel(address: address, mockedData: mockedData, assyncMode: assyncMode)
+    init(address: String, mockedData: Data? = nil, asyncMode: Bool = true) {
+        self.locationModel = LocationModel(address: address, mockedData: mockedData, asyncMode: asyncMode)
         self.tenDayForecastViewModel = TenDayForecastViewModel()
         self.hourlyForecastViewModel = HourlyForecastViewModel()
         self.uvIndexViewModel = UVIndexViewModel()

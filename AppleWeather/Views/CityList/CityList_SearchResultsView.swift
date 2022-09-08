@@ -56,7 +56,7 @@ struct CityList_SearchResultsView: View {
 
 struct CityList_SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        let watherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        let watherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
         let cityListViewModel = watherViewModel.cityListViewModel
         CityList_SearchResultsView(firstScrollablePlaceholderItemHeight: 100)
             .environmentObject(cityListViewModel)

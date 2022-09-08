@@ -22,9 +22,9 @@ class LocationModel {
     
     /// Create and instance of LocationModel for specific address
     /// - Parameter address: Location address string used by VCW API to find weather for this location. This is the same string that you enter in the search bar
-    init(address: String, mockedData: Data? = nil, assyncMode: Bool = true) {
+    init(address: String, mockedData: Data? = nil, asyncMode: Bool = true) {
         self.mockedData = mockedData
-        self.asyncMode = assyncMode
+        self.asyncMode = asyncMode
         self.location = VCW_Location(address: address)
     }
     
@@ -76,35 +76,32 @@ class LocationModel {
         if asyncMode {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let self = self else { return }
-                print("ALEX: LocationModel.update for \(self.location.address)")
+                print("LocationModel.update for \(self.location.address)")
                 self.updateResult = nil
                 VCW().getWeather(at: self.location.address, mockedData: self.mockedData) { [weak self] result in
                     DispatchQueue.main.async {
-                        if let self = self {
-                            self.updateResult = result
-                            switch result {
-                            case .success(let newLocationValue):
-                                print("ALEX: LocationModel.update SUCCESS for \(self.location.address)")
-                                self.location = newLocationValue
-                            case .failure(let error):
-                                print("ALEX: LocationModel.update ERROR for \(self.location.address)")
-                                print(error)
-                            }
-                        }
-                        self?.lastUpdateTime = Date()
-                        completion(result)
+                        self?.handleGetVeatherResponse(completion: completion, result: result)
                     }
                 }
             }
         } else {
             VCW().getWeather(at: self.location.address, mockedData: self.mockedData) { [weak self] result in
-                if case let .success(vcwLocation) = result {
-                    self?.location = vcwLocation
-                }
-                self?.updateResult = result
-                self?.lastUpdateTime = Date()
-                completion(result)
+                self?.handleGetVeatherResponse(completion: completion, result: result)
             }
         }
+    }
+    
+    private func handleGetVeatherResponse(completion: @escaping ((Result<VCW_Location, Error>) -> ()), result: Result<VCW_Location, Error>) {
+        self.updateResult = result
+        switch result {
+        case .success(let newLocationValue):
+            print("LocationModel.update SUCCESS for \(self.location.address)")
+            self.location = newLocationValue
+        case .failure(let error):
+            print("LocationModel.update ERROR for \(self.location.address)")
+            print(error)
+        }
+        lastUpdateTime = Date()
+        completion(result)
     }
 }

@@ -92,7 +92,7 @@ struct LocationTenDayForecast_Previews: PreviewProvider {
             Color(hex: "4082BE")
                 .ignoresSafeArea()
             
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             let tenDayForecastViewModel = weatherViewModel.locationViewModels.first?.tenDayForecastViewModel
             TenDayForecastView()
                 .environmentObject(tenDayForecastViewModel!)

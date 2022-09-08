@@ -121,7 +121,7 @@ struct WaveView_Previews: PreviewProvider {
         ZStack {
             Color(hex: "4082BE")
                 .ignoresSafeArea()
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             let uvIndexViewModel = weatherViewModel.selectedLocationViewModel.uvIndexViewModel
             WaveView(sunriseInSeconds: 5*3600 + 49*60,
                      sunsetInSeconds: 20*3600 + 21*60,

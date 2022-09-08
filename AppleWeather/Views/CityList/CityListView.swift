@@ -126,7 +126,7 @@ struct CityListView: View {
 
 struct CityListView_Previews: PreviewProvider {
     static var previews: some View {
-        let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
         CityListView()
             .environmentObject(weatherViewModel)
             .environmentObject(weatherViewModel.cityListViewModel)

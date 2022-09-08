@@ -13,7 +13,7 @@ class WeatherViewModelTests: XCTestCase {
     var weatherViewModel: WeatherViewModel?
 
     @MainActor override func setUpWithError() throws {
-        weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+        weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
     }
 
     @MainActor override func tearDownWithError() throws {

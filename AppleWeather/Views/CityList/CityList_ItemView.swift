@@ -105,7 +105,7 @@ struct CityList_ItemView_Previews: PreviewProvider {
                 .fill(Color(hex: "000000"))
                 .ignoresSafeArea()
             
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             CityList_ItemView()
                 .environmentObject(weatherViewModel.locationViewModels[0])
                 .environmentObject(weatherViewModel.cityListViewModel)

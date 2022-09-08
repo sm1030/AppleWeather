@@ -63,7 +63,7 @@ struct CityList_LocationPreview_Previews: PreviewProvider {
         ZStack {
             Color.black
             
-            let weatherViewModel = WeatherViewModel(isUsingMockData: true, assyncMode: false)
+            let weatherViewModel = WeatherViewModel(isUsingMockData: true, asyncMode: false)
             let cityListViewModel = weatherViewModel.cityListViewModel
             CityList_LocationPreview()
                 .environmentObject(weatherViewModel)
